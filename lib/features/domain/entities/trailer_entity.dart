@@ -3,6 +3,8 @@ class TrailerEntity {
   final List<TrailerResultEntity> results;
 
   TrailerEntity({required this.id, required this.results});
+
+  get length => null;
 }
 
 class TrailerResultEntity {

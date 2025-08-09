@@ -5,6 +5,9 @@ class MovieEntity {
   final String? overview;
   final double? voteAverage;
   final String? releaseDate;
+  final String? backdropPath;
+  final String? rating;
+  final String? videoKey;
 
   MovieEntity({
     required this.id,
@@ -13,5 +16,8 @@ class MovieEntity {
     this.overview,
     this.voteAverage,
     this.releaseDate,
+    this.backdropPath,
+    this.rating,
+    this.videoKey,
   });
 }

@@ -6,6 +6,7 @@ import 'package:movie_explorer/features/presentation/bloc/tv/tv_state.dart';
 class TvBloc extends Bloc<TvEvent, TvState> {
 final MovieAndTvRepository _repository;
 
+
 TvBloc(this._repository) : super(TvInitial()) {
   on<FetchAllTv>(_onFetchAllTvShows);
 }
@@ -27,8 +28,8 @@ Future<void> _onFetchAllTvShows(
     emit(TvLoaded(
       popularTv: results[0],
       topRatedTv: results[1],
-      nowPlayingTv: results[2],
-      upcomingTv: results[3],
+      airingTodayTv: results[2],
+      onTheAirTv: results[3],
     ));
   } catch (e) {
     emit(TvError(e.toString()));

@@ -5,10 +5,13 @@ import 'package:movie_explorer/features/presentation/bloc/movie/movies_bloc.dart
 import 'package:movie_explorer/features/presentation/bloc/movie/movies_state.dart';
 import 'package:movie_explorer/features/presentation/bloc/tv/tv_bloc.dart';
 import 'package:movie_explorer/features/presentation/bloc/tv/tv_state.dart';
+import 'package:movie_explorer/features/presentation/widgets/airing_today_tv.dart';
 import 'package:movie_explorer/features/presentation/widgets/now_playing_movies.dart';
+import 'package:movie_explorer/features/presentation/widgets/on_the_air.dart';
 import 'package:movie_explorer/features/presentation/widgets/popular_movies.dart';
 import 'package:movie_explorer/features/presentation/widgets/popular_tv.dart';
 import 'package:movie_explorer/features/presentation/widgets/top_rated_movies.dart';
+import 'package:movie_explorer/features/presentation/widgets/top_rated_tv.dart';
 import 'package:movie_explorer/features/presentation/widgets/upcoming_movies.dart';
 
 class HomePage extends StatelessWidget {
@@ -73,6 +76,12 @@ class HomePage extends StatelessWidget {
                           Divider(color: Colors.white30, thickness: 1),
                           SizedBox(height: 20),
                           PopularTv(tvShows: state.popularTv),
+                          SizedBox(height: 20),
+                          TopRatedTv(tvShows: state.topRatedTv),
+                          SizedBox(height: 20),
+                          AiringTodayTv(tvShows: state.airingTodayTv),
+                          SizedBox(height: 20),
+                          OnTheAirTv(tvShows: state.onTheAirTv),
                         ],
                       ),
                     ),

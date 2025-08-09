@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_explorer/features/domain/entities/movie_entity.dart';
+import 'package:movie_explorer/features/domain/repositories/movie_and_tv_repository.dart';
+import 'package:movie_explorer/features/presentation/bloc/movie_detail/movie_detail_bloc.dart';
+import 'package:movie_explorer/features/presentation/bloc/movie_detail/movie_detail_event.dart';
+import 'package:movie_explorer/features/presentation/pages/movie_detail_page.dart';
 
 class UpcomingMovies extends StatelessWidget {
   final List<MovieEntity> movies;
@@ -29,12 +34,17 @@ class UpcomingMovies extends StatelessWidget {
               final movie = movies[index];
               return GestureDetector(
                 onTap: () {
-                  // Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute(
-                  //     builder: (context) =>   DetailPage(movie: movie),
-                  //   ),
-                  // );
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => BlocProvider(
+                        create: (context) => MovieDetailBloc(
+                          RepositoryProvider.of<MovieAndTvRepository>(context),
+                        )..add(FetchMovieDetail(movie.id)),
+                        child: MovieDetailPage(movieId: movie.id, movie: movie),
+                      ),
+                    ),
+                  );
                   print('Tapped on ${movie.title}');
                 },
                 child: Container(

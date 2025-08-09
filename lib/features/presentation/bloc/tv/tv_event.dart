@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-class TvEvent extends Equatable {
+abstract class TvEvent extends Equatable {
   @override
   List<Object?> get props => [];
 }

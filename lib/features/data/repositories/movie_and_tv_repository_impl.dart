@@ -1,4 +1,3 @@
-
 import 'package:movie_explorer/features/data/data_sources/remote/tmdb_api.dart';
 import 'package:movie_explorer/features/data/models/movie_model.dart';
 import 'package:movie_explorer/features/data/models/trailer_model.dart';
@@ -30,7 +29,7 @@ class MovieAndTvRepositoryImpl implements MovieAndTvRepository {
     return _tmdbApi.getUpcomingMovies();
   }
 
-@override
+  @override
   Future<List<TvModel>> getPopularTvShows() {
     return _tmdbApi.getPopularTvShows();
   }
@@ -54,6 +53,19 @@ class MovieAndTvRepositoryImpl implements MovieAndTvRepository {
   Future<TrailerModel> getTrailer(int movieId) {
     return _tmdbApi.getTrailer(movieId);
   }
+
+  @override
+  Future<MovieModel> getMovieDetail(int movieId) {
+    return _tmdbApi.getMovieDetail(movieId);
+  }
+
+  @override
+  Future<TvModel> getTvDetail(int tvId) {
+    return _tmdbApi.getTvDetail(tvId);
+  }
+
+  @override
+  Future<TrailerModel> getTvTrailer(int tvId) {
+    return _tmdbApi.getTvTrailer(tvId);
+  }
 }
-
-

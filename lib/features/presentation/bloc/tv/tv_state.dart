@@ -11,24 +11,24 @@ class TvInitial extends TvState {}
 class TvLoading extends TvState {}
 
 class TvLoaded extends TvState {
-  final List<TvEntity> nowPlayingTv;
-  final List<TvEntity> popularTv;
+    final List<TvEntity> popularTv;
   final List<TvEntity> topRatedTv;
-  final List<TvEntity> upcomingTv;
+  final List<TvEntity> airingTodayTv;
+  final List<TvEntity> onTheAirTv;
 
    TvLoaded({
-    required this.nowPlayingTv,
     required this.popularTv,
     required this.topRatedTv,
-    required this.upcomingTv,
+    required this.airingTodayTv,
+    required this.onTheAirTv,
   });
 
     @override
   List<Object?> get props => [
-    nowPlayingTv,
     popularTv,
     topRatedTv,
-    upcomingTv,
+    airingTodayTv,
+    onTheAirTv,
   ];
 }
 class TvError extends TvState {

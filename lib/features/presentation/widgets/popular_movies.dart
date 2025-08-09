@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_explorer/features/domain/entities/movie_entity.dart';
+import 'package:movie_explorer/features/domain/repositories/movie_and_tv_repository.dart';
+import 'package:movie_explorer/features/presentation/bloc/movie_detail/movie_detail_bloc.dart';
+import 'package:movie_explorer/features/presentation/bloc/movie_detail/movie_detail_event.dart';
+import 'package:movie_explorer/features/presentation/pages/movie_detail_page.dart';
 
 class PopularMovies extends StatelessWidget {
   final List<MovieEntity> movies;
@@ -26,16 +31,28 @@ class PopularMovies extends StatelessWidget {
           itemBuilder: (context, index, realIndex) {
             final movie = movies[index];
             final posterPath = movie.posterPath;
-    
             return GestureDetector(
               onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => BlocProvider(
+                      create: (context) =>
+                          MovieDetailBloc(
+                            RepositoryProvider.of<MovieAndTvRepository>(
+                              context,
+                            ),
+                          )..add(
+                            FetchMovieDetail(movie.id),
+                          ), // Önemli: Detay veriyi çağıran event'i ekle
+                      child: MovieDetailPage(movieId: movie.id, movie: movie),
+                    ),
+                  ),
+                );
                 print('Tapped on ${movie.title}');
               },
               child: Container(
-                margin: const EdgeInsets.symmetric(
-                  horizontal: 6,
-                  vertical: 8,
-                ),
+                margin: const EdgeInsets.symmetric(horizontal: 6, vertical: 8),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(16),
                   boxShadow: [
