@@ -59,7 +59,7 @@ class MovieDetailPage extends StatelessWidget {
                         vertical: 16,
                       ),
                       child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Image.network(
                             'https://image.tmdb.org/t/p/w500${movie.posterPath}',
